@@ -1,0 +1,143 @@
+<?php
+/**
+ * Slideshow
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new MIT license that is bundled
+ * with this package in the file LICENSE.
+ *
+ * @category   KL
+ * @package    KL_Slideshow
+ * @copyright  Copyright (c) 2013 Karlsson & Lord AB (http://karlssonlord.com)
+ * @license    http://opensource.org/licenses/MIT MIT License
+ */
+
+/**
+ * Form block class.
+ *
+ * @category   KL
+ * @package    KL_Slideshow
+ * @copyright  Copyright (c) 2013 Karlsson & Lord AB (http://karlssonlord.com)
+ * @license    http://opensource.org/licenses/MIT MIT License
+ */
+class KL_Slideshow_Block_Admin_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
+{
+    /**
+     * Constructor
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->setId('slide_form');
+        $this->setTitle(Mage::helper('slideshow')->__('Slide'));
+    }
+
+    /**
+     * Prepare layout
+     *
+     * @return void
+     */
+    protected function _prepareLayout() {
+        parent::_prepareLayout();
+
+        if (Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) {
+            $this->getLayout()->getBlock('head')->setCanLoadTinyMce(true);
+        }
+    }
+
+    /**
+     * Prepare form
+     */
+    protected function _prepareForm() {
+        $model = Mage::registry('slideshow');
+
+        $form = new Varien_Data_Form(array(
+            'id'      => 'edit_form',
+            'action'  => $this->getData('action'),
+            'method'  => 'post',
+            'enctype' => 'multipart/form-data'
+        ));
+
+        $form->setHtmlIdPrefix('slide_');
+
+        $fieldset = $form->addFieldset('base_fieldset', array(
+            'legend' => Mage::helper('slideshow')->__('Slide'),
+            'class'  => 'fieldset-wide'
+        ));
+
+        if ($model->getSlideId()) {
+            $fieldset->addField('slide_id', 'hidden', array(
+                'name' => 'slide_id',
+            ));
+        }
+
+        $fieldset->addField('name', 'text', array(
+            'name'      => 'name',
+            'label'     => Mage::helper('slideshow')->__('Name'),
+            'title'     => Mage::helper('slideshow')->__('Name'),
+            'required'  => true,
+        ));
+
+        if (Mage::app()->isSingleStoreMode()) {
+            $fieldset->addField('store_id', 'hidden', array(
+                'name'     => 'stores[]',
+                'value'    => Mage::app()->getStore(true)->getId()
+            ));
+
+            $model->setStoreId(Mage::app()->getStore(true)->getId());
+        } else {
+            $fieldset->addField('store_id', 'multiselect', array(
+                'name'     => 'stores[]',
+                'label'    => Mage::helper('slideshow')->__('Store View'),
+                'title'    => Mage::helper('slideshow')->__('Store View'),
+                'required' => true,
+                'values'   => Mage::getSingleton('adminhtml/system_store')->getStoreValuesForForm(false, true),
+            ));
+        }
+
+        $fieldset->addField('is_active', 'select', array(
+            'label'    => Mage::helper('slideshow')->__('Status'),
+            'title'    => Mage::helper('slideshow')->__('Status'),
+            'name'     => 'is_active',
+            'required' => true,
+            'options'  => array(
+                '1' => Mage::helper('slideshow')->__('Enabled'),
+                '0' => Mage::helper('slideshow')->__('Disabled'),
+            ),
+        ));
+
+        if (!$model->getId()) {
+            $model->setData('is_active', '1');
+        }
+
+        $fieldset->addField('position', 'text', array(
+            'name'  => 'position',
+            'label' => Mage::helper('slideshow')->__('Position'),
+            'title' => Mage::helper('slideshow')->__('Position'),
+        ));
+
+        $fieldset->addType('image', 'KL_Slideshow_Data_Form_Element_Image');
+
+        $fieldset->addField('file_name', 'image', array(
+            'name'  => 'file_name',
+            'label' => Mage::helper('slideshow')->__('Bildfil'),
+            'title' => Mage::helper('slideshow')->__('Bildfil'),
+        ));
+
+        $fieldset->addField('url', 'text', array(
+            'name'  => 'url',
+            'label' => Mage::helper('slideshow')->__('URL'),
+            'title' => Mage::helper('slideshow')->__('URL'),
+        ));
+
+        $form->setValues($model->getData());
+        $form->setUseContainer(true);
+        $this->setForm($form);
+
+        return parent::_prepareForm();
+    }
+}

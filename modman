@@ -1,0 +1,5 @@
+app/code/community/KL/Slideshow                           app/code/community/KL/Slideshow
+app/design/adminhtml/default/default/layout/slideshow.xml app/design/adminhtml/default/default/layout/slideshow.xml
+app/etc/modules/KL_Slideshow.xml                          app/etc/modules/KL_Slideshow.xml
+app/locale/en_US/*                                        app/locale/en_US/
+app/locale/sv_SE/*                                        app/locale/sv_SE/

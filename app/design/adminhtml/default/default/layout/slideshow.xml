@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<layout>
+    <slideshow_admin_index>
+        <reference name="content">
+            <block type="slideshow/admin" name="cms_block"></block>
+        </reference>
+    </slideshow_admin_index>
+    <slideshow_admin_new>
+        <update handle="slideshow_admin_edit" />
+    </slideshow_admin_new>
+    <slideshow_admin_edit>
+        <update handle="editor"/>
+        <reference name="content">
+            <block type="slideshow/admin_edit" name="cms_block_edit"></block>
+        </reference>
+    </slideshow_admin_edit>
+</layout>
