@@ -21,7 +21,7 @@
  * @copyright  Copyright (c) 2013 Karlsson & Lord AB (http://karlssonlord.com)
  * @license    http://opensource.org/licenses/MIT MIT License
  */
-class KL_Slideshow_Data_Form_Element_Image
+class KL_Slideshow_Model_Data_Form_Element_Image
     extends Varien_Data_Form_Element_Image
 {
     /**
@@ -35,5 +35,4 @@ class KL_Slideshow_Data_Form_Element_Image
 
         return $url;
     }
-
 }

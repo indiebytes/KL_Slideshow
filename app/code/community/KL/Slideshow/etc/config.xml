@@ -6,6 +6,14 @@
         </KL_Slideshow>
     </modules>
     <global>
+        <resources>
+            <slideshow_setup>
+                <setup>
+                    <module>KL_Slideshow</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </slideshow_setup>
+        </resources>
         <models>
             <slideshow>
                 <class>KL_Slideshow_Model</class>
@@ -23,13 +31,6 @@
                 </entities>
             </slideshow_mysql4>
         </models>
-        <resources>
-            <slideshow_setup>
-                <setup>
-                    <module>KL_Slideshow</module>
-                </setup>
-            </slideshow_setup>
-        </resources>
         <blocks>
             <slideshow>
                 <class>KL_Slideshow_Block</class>
@@ -41,7 +42,6 @@
             </slideshow>  
         </helpers>
     </global>
-    
     <frontend>
         <routers>
             <slideshow>
@@ -53,7 +53,6 @@
             </slideshow>
         </routers>
     </frontend>
-    
     <admin>
         <routers>
             <slideshow>
@@ -65,7 +64,6 @@
             </slideshow>
         </routers>
     </admin>
-    
     <adminhtml>
         <menu>
             <cms>

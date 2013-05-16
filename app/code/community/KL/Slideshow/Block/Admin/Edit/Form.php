@@ -120,7 +120,7 @@ class KL_Slideshow_Block_Admin_Edit_Form extends Mage_Adminhtml_Block_Widget_For
             'title' => Mage::helper('slideshow')->__('Position'),
         ));
 
-        $fieldset->addType('image', 'KL_Slideshow_Data_Form_Element_Image');
+        $fieldset->addType('image', 'KL_Slideshow_Model_Data_Form_Element_Image');
 
         $fieldset->addField('file_name', 'image', array(
             'name'  => 'file_name',

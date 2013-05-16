@@ -92,7 +92,7 @@ class KL_Slideshow_Model_Mysql4_Slide
             $select = $this->_getReadAdapter()->select()
                 ->from($this->getTable('slideshow/slide_store'))
                 ->where('slide_id = ?', $object->getId());
-            $data   = $this->_getReadAdapter()->fetchAll($select)
+            $data   = $this->_getReadAdapter()->fetchAll($select);
 
             if ($data) {
                 $storesArray = array();
