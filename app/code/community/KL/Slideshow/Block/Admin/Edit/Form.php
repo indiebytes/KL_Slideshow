@@ -114,6 +114,13 @@ class KL_Slideshow_Block_Admin_Edit_Form extends Mage_Adminhtml_Block_Widget_For
             $model->setData('is_active', '1');
         }
 
+        $fieldset->addField('cta', 'text', array(
+            'name'  => 'cta',
+            'label' => Mage::helper('slideshow')->__('CTA'),
+            'title' => Mage::helper('slideshow')->__('CTA'),
+            'after_element_html' => '<small>' . Mage::helper('slideshow')->__('The Call To Action text could e.g. be used in a button.') . '</small>',
+        ));
+
         $fieldset->addField('position', 'text', array(
             'name'  => 'position',
             'label' => Mage::helper('slideshow')->__('Position'),

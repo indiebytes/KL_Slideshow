@@ -42,7 +42,7 @@ class KL_Slideshow_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function getImageUrl($filename = null)
     {
-        $url = $this->getImagePath();
+        $url = Mage::getBaseUrl('media') . 'slideshow' . DS;
 
         if ($filename !== null) {
             $url .= $filename;

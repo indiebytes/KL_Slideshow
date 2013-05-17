@@ -25,6 +25,10 @@ $tables[] = $installer->getConnection()
         array(
         ),
         'Filename')
+    ->addColumn('cta', Varien_Db_Ddl_Table::TYPE_TEXT, 255,
+        array(
+        ), 
+        'Call To Action')
     ->addColumn('url', Varien_Db_Ddl_Table::TYPE_TEXT, 255,
         array(
         ), 
@@ -38,11 +42,11 @@ $tables[] = $installer->getConnection()
         array(
         ),
         'Position')
-    ->addColumn('creation_time', Varien_Db_Ddl_Table::TYPE_TEXT, 255,
+    ->addColumn('creation_time', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null,
         array(
         ),
         'Creation time')
-    ->addColumn('update_time', Varien_Db_Ddl_Table::TYPE_TEXT, 255,
+    ->addColumn('update_time', Varien_Db_Ddl_Table::TYPE_TIMESTAMP, null,
         array(
         ),
         'Update time')
