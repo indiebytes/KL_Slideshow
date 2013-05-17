@@ -75,10 +75,10 @@ class KL_Slideshow_Block_Admin_Edit_Form extends Mage_Adminhtml_Block_Widget_For
             ));
         }
 
-        $fieldset->addField('name', 'text', array(
-            'name'      => 'name',
-            'label'     => Mage::helper('slideshow')->__('Name'),
-            'title'     => Mage::helper('slideshow')->__('Name'),
+        $fieldset->addField('title', 'text', array(
+            'name'      => 'title',
+            'label'     => Mage::helper('slideshow')->__('Title'),
+            'title'     => Mage::helper('slideshow')->__('Title'),
             'required'  => true,
         ));
 
@@ -122,16 +122,25 @@ class KL_Slideshow_Block_Admin_Edit_Form extends Mage_Adminhtml_Block_Widget_For
 
         $fieldset->addType('image', 'KL_Slideshow_Model_Data_Form_Element_Image');
 
-        $fieldset->addField('file_name', 'image', array(
-            'name'  => 'file_name',
-            'label' => Mage::helper('slideshow')->__('Bildfil'),
-            'title' => Mage::helper('slideshow')->__('Bildfil'),
+        $fieldset->addField('filename', 'image', array(
+            'name'  => 'filename',
+            'label' => Mage::helper('slideshow')->__('Image'),
+            'title' => Mage::helper('slideshow')->__('Image'),
         ));
 
         $fieldset->addField('url', 'text', array(
             'name'  => 'url',
             'label' => Mage::helper('slideshow')->__('URL'),
             'title' => Mage::helper('slideshow')->__('URL'),
+        ));
+
+        $fieldset->addField('content', 'editor', array(
+            'name'      => 'content',
+            'label'     => Mage::helper('slideshow')->__('Content'),
+            'title'     => Mage::helper('slideshow')->__('Content'),
+            'style'     => 'height:12em',
+            'required'  => false,
+            'config'    => Mage::getSingleton('cms/wysiwyg_config')->getConfig()
         ));
 
         $form->setValues($model->getData());

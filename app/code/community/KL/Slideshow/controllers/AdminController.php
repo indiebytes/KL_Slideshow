@@ -137,10 +137,10 @@ class KL_Slideshow_AdminController extends Mage_Adminhtml_Controller_Action
             }
 
             try {
-                $image = $this->getRequest()->getPost('file_name');
+                $image = $this->getRequest()->getPost('filename');
 
-                if (!empty($_FILES['file_name']['name'])) {
-                    $uploader = new Varien_File_Uploader('file_name');
+                if (!empty($_FILES['filename']['name'])) {
+                    $uploader = new Varien_File_Uploader('filename');
 
                     $uploader->setAllowedExtensions(array('jpg', 'jpeg', 'gif', 'png'));
                     $uploader->setAllowRenameFiles(true);
@@ -148,15 +148,15 @@ class KL_Slideshow_AdminController extends Mage_Adminhtml_Controller_Action
                     
                     $result = $uploader->save(
                         Mage::helper('slideshow')->getImagePath(),
-                        $_FILES['file_name']['name']
+                        $_FILES['filename']['name']
                     );
 
-                    $data['file_name'] = $result['file'];
+                    $data['filename'] = $result['file'];
                 } else if (is_array($image)) {
                     if (isset($image['delete']) && $image['delete'] == 1) {
-                        $data['file_name'] = '';
+                        $data['filename'] = '';
                     } else if (isset($image['value'])) {
-                        $data['file_name'] = $image['value'];
+                        $data['filename'] = $image['value'];
                     }
                 }
 

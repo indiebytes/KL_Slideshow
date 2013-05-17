@@ -59,10 +59,10 @@ class KL_Slideshow_Block_Admin_Grid extends Mage_Adminhtml_Block_Widget_Grid
     {
         $baseUrl = $this->getUrl();
 
-        $this->addColumn('name', array(
-            'header'    => Mage::helper('slideshow')->__('Name'),
+        $this->addColumn('title', array(
+            'header'    => Mage::helper('slideshow')->__('Title'),
             'align'     => 'left',
-            'index'     => 'name',
+            'index'     => 'title',
         ));
 
         $this->addColumn('position', array(
