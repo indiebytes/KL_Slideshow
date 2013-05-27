@@ -58,8 +58,8 @@ class KL_Slideshow_Block_Admin_Edit
     {
         if (Mage::registry('slideshow')->getId()) {
             return Mage::helper('slideshow')->__(
-                "Edit slide '%s'",
-                $this->htmlEscape(Mage::registry('slideshow')->getName())
+                "Edit Slide '%s'",
+                $this->htmlEscape(Mage::registry('slideshow')->getTitle())
             );
         } else {
             return Mage::helper('slideshow')->__('New slide');
