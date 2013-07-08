@@ -4,6 +4,9 @@
         <KL_Slideshow>
             <active>true</active>
             <codePool>community</codePool>
+            <depends>
+                <Mage_Core/>
+            </depends>
         </KL_Slideshow>
     </modules>
 </config>
