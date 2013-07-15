@@ -2,7 +2,7 @@
 <config>
     <modules>
         <KL_Slideshow>
-            <version>0.1.0</version>
+            <version>0.1.1</version>
         </KL_Slideshow>
     </modules>
     <global>
@@ -22,12 +22,18 @@
             <slideshow_mysql4>
                 <class>KL_Slideshow_Model_Mysql4</class>
                 <entities>
+                    <slideshow>
+                        <table>slideshow</table>
+                    </slideshow>
                     <slide>
                         <table>slide</table>
                     </slide>
                     <slide_store>
                         <table>slide_store</table>
                     </slide_store>
+                    <slideshow_store>
+                        <table>slideshow_store</table>
+                    </slideshow_store>
                 </entities>
             </slideshow_mysql4>
         </models>
