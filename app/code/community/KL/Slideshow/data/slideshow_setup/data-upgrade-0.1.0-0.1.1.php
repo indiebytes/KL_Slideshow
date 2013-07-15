@@ -86,7 +86,7 @@ $tables[] = $installer->getConnection()
     ->addForeignKey($installer->getFkName('slideshow_store', 'slideshow_id', 'slideshow', 'slideshow_id'),
         'slideshow_id', $installer->getTable('slideshow'), 'slideshow_id',
         Varien_Db_Ddl_Table::ACTION_CASCADE, Varien_Db_Ddl_Table::ACTION_CASCADE)
-    ->setComment('Relations between slideshows and stores');
+    ->setComment('Relations between slideshows and slides');
 
 foreach ($tables as $table) {
     $installer->getConnection()->createTable($table);
