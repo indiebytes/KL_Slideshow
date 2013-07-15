@@ -78,12 +78,12 @@ $tables[] = $installer->getConnection()
             'primary'  => true
         ),
         'Store Id')
-    ->addIndex($installer->getIdxName('slideshow_store', array('slideshow_id')),
+    ->addIndex($installer->getIdxName('slideshow_slide', array('slideshow_id')),
         array('slideshow_id'))
-    ->addForeignKey($installer->getFkName('slideshow_store', 'slide_id', 'slide', 'slide_id'),
+    ->addForeignKey($installer->getFkName('slideshow_slide', 'slide_id', 'slide', 'slide_id'),
         'slide_id', $installer->getTable('slide'), 'slide_id',
         Varien_Db_Ddl_Table::ACTION_CASCADE, Varien_Db_Ddl_Table::ACTION_CASCADE)
-    ->addForeignKey($installer->getFkName('slideshow_store', 'slideshow_id', 'slideshow', 'slideshow_id'),
+    ->addForeignKey($installer->getFkName('slideshow_slide', 'slideshow_id', 'slideshow', 'slideshow_id'),
         'slideshow_id', $installer->getTable('slideshow'), 'slideshow_id',
         Varien_Db_Ddl_Table::ACTION_CASCADE, Varien_Db_Ddl_Table::ACTION_CASCADE)
     ->setComment('Relations between slideshows and slides');
