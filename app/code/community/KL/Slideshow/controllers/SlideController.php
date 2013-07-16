@@ -21,7 +21,7 @@
  * @copyright  Copyright (c) 2013 Karlsson & Lord AB (http://karlssonlord.com)
  * @license    http://opensource.org/licenses/MIT MIT License
  */
-class KL_Slideshow_AdminController extends Mage_Adminhtml_Controller_Action
+class KL_Slideshow_SlideController extends Mage_Adminhtml_Controller_Action
 {
     /**
      * Init action

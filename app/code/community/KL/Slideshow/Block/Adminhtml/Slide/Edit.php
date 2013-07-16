@@ -21,8 +21,8 @@
  * @copyright  Copyright (c) 2013 Karlsson & Lord AB (http://karlssonlord.com)
  * @license    http://opensource.org/licenses/MIT MIT License
  */
-class KL_Slideshow_Block_Admin_Edit
-    extends KL_Slideshow_Block_Admin_Form_Container
+class KL_Slideshow_Block_Adminhtml_Slide_Edit
+    extends KL_Slideshow_Block_Adminhtml_Slide_Form_Container
 {
     /**
      * Constructor
@@ -32,7 +32,7 @@ class KL_Slideshow_Block_Admin_Edit
     public function __construct()
     {
         $this->_objectId   = 'slide_id';
-        $this->_controller = 'admin';
+        $this->_controller = 'adminhtml_slide';
 
         parent::__construct();
 

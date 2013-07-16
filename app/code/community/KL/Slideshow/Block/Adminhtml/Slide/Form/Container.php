@@ -14,26 +14,20 @@
  */
 
 /**
- * Admin block
+ * Admin form container
  *
  * @category   KL
  * @package    KL_Slideshow
  * @copyright  Copyright (c) 2013 Karlsson & Lord AB (http://karlssonlord.com)
  * @license    http://opensource.org/licenses/MIT MIT License
  */
-class KL_Slideshow_Block_Admin extends KL_Slideshow_Block_Admin_Grid_Container
+class KL_Slideshow_Block_Adminhtml_Slide_Form_Container
+    extends Mage_Adminhtml_Block_Widget_Form_Container
 {
     /**
-     * Constructor
+     * Block group
      *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->_controller     = 'admin';
-        $this->_headerText     = Mage::helper('slideshow')->__('Slideshows');
-        $this->_addButtonLabel = Mage::helper('slideshow')->__('Add new slide');
-
-        parent::__construct();
-    }
+     * @var string
+     **/
+    protected $_blockGroup = 'slideshow';
 }

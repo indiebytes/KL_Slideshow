@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <layout>
-    <slideshow_admin_index>
+    <slideshow_slide_index>
         <reference name="content">
-            <block type="slideshow/admin" name="cms_block"></block>
+            <block type="slideshow/adminhtml_slide" name="cms_block"/>
         </reference>
-    </slideshow_admin_index>
-    <slideshow_admin_new>
-        <update handle="slideshow_admin_edit" />
-    </slideshow_admin_new>
-    <slideshow_admin_edit>
+    </slideshow_slide_index>
+    <slideshow_slide_new>
+        <update handle="slideshow_slide_edit" />
+    </slideshow_slide_new>
+    <slideshow_slide_edit>
         <update handle="editor"/>
         <reference name="content">
-            <block type="slideshow/admin_edit" name="cms_block_edit"></block>
+            <block type="slideshow/adminhtml_slide_edit" name="cms_block_edit"></block>
         </reference>
-    </slideshow_admin_edit>
+    </slideshow_slide_edit>
 </layout>

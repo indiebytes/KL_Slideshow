@@ -74,11 +74,23 @@
         <menu>
             <cms>
                 <children>
-                    <slideshow_adminform translate="title" module="slideshow">
+                    <slideshow_root translate="title" module="slideshow">
                         <title>Slideshows</title>
-                        <action>slideshow/admin</action>
+                        <action>slideshow/slideshow</action>
                         <sort_order>25</sort_order>
-                    </slideshow_adminform>
+                        <children>
+                            <slideshow translate="title" module="slideshow">
+                                <title>Slideshows</title>
+                                <action>slideshow/slideshow</action>
+                                <sort_order>10</sort_order>
+                            </slideshow>
+                            <slide translate="title" module="slideshow">
+                                <title>Slides</title>
+                                <action>slideshow/slide</action>
+                                <sort_order>20</sort_order>
+                            </slide>
+                        </children>
+                    </slideshow_root>
                 </children>
             </cms>
         </menu>

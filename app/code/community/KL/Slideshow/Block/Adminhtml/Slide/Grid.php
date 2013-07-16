@@ -21,7 +21,8 @@
  * @copyright  Copyright (c) 2013 Karlsson & Lord AB (http://karlssonlord.com)
  * @license    http://opensource.org/licenses/MIT MIT License
  */
-class KL_Slideshow_Block_Admin_Grid extends Mage_Adminhtml_Block_Widget_Grid
+class KL_Slideshow_Block_Adminhtml_Slide_Grid
+    extends Mage_Adminhtml_Block_Widget_Grid
 {
     /**
      * Constructor
