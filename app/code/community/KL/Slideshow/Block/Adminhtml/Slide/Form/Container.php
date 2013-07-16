@@ -30,4 +30,17 @@ class KL_Slideshow_Block_Adminhtml_Slide_Form_Container
      * @var string
      **/
     protected $_blockGroup = 'slideshow';
+
+    /**
+     * Get form action URL
+     *
+     * @return string
+     */
+    public function getFormActionUrl()
+    {
+        if ($this->hasFormActionUrl()) {
+            return $this->getData('form_action_url');
+        }
+        return $this->getUrl('*/' . 'slide' . '/save');
+    }
 }
