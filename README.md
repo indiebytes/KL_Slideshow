@@ -1,10 +1,13 @@
 # KL_Slideshow
 
-## Installation
+## Install
 
-### With modman
+The easiest way to install the module is by using [modman](https://github.com/karlssonlord/modman):
 
-### Without modman
+1. `modman clone git@github.com:indiebytes/KL_Slideshow.git`
+2. `modman deploy KL_Slideshow`
+3. Clear the cache
+4. You're good to go
 
 ## Usage
 
