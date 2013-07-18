@@ -34,6 +34,9 @@
                     <slideshow_store>
                         <table>slideshow_store</table>
                     </slideshow_store>
+                    <slideshow_slide>
+                        <table>slideshow_slide</table>
+                    </slideshow_slide>
                 </entities>
             </slideshow_mysql4>
         </models>
@@ -45,7 +48,7 @@
         <helpers>
             <slideshow>
                 <class>KL_Slideshow_Helper</class>
-            </slideshow>  
+            </slideshow>
         </helpers>
     </global>
     <frontend>

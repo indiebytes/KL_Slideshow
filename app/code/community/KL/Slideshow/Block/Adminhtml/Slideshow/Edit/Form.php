@@ -21,7 +21,7 @@
  * @copyright  Copyright (c) 2013 Karlsson & Lord AB (http://karlssonlord.com)
  * @license    http://opensource.org/licenses/MIT MIT License
  */
-class KL_Slideshow_Block_Adminhtml_Slide_Edit_Form
+class KL_Slideshow_Block_Adminhtml_Slideshow_Edit_Form
     extends Mage_Adminhtml_Block_Widget_Form
 {
     /**
@@ -33,8 +33,8 @@ class KL_Slideshow_Block_Adminhtml_Slide_Edit_Form
     {
         parent::__construct();
 
-        $this->setId('slide_form');
-        $this->setTitle(Mage::helper('slideshow')->__('Slide'));
+        $this->setId('slideshow_form');
+        $this->setTitle(Mage::helper('slideshow')->__('Slideshow'));
     }
 
     /**
@@ -63,16 +63,16 @@ class KL_Slideshow_Block_Adminhtml_Slide_Edit_Form
             'enctype' => 'multipart/form-data'
         ));
 
-        $form->setHtmlIdPrefix('slide_');
+        $form->setHtmlIdPrefix('slideshow_');
 
         $fieldset = $form->addFieldset('base_fieldset', array(
-            'legend' => Mage::helper('slideshow')->__('Slide'),
+            'legend' => Mage::helper('slideshow')->__('Slideshow'),
             'class'  => 'fieldset-wide'
         ));
 
-        if ($model->getSlideId()) {
-            $fieldset->addField('slide_id', 'hidden', array(
-                'name' => 'slide_id',
+        if ($model->getSlideshowId()) {
+            $fieldset->addField('slideshow_id', 'hidden', array(
+                'name' => 'slideshow_id',
             ));
         }
 
@@ -114,56 +114,6 @@ class KL_Slideshow_Block_Adminhtml_Slide_Edit_Form
         if (!$model->getId()) {
             $model->setData('is_active', '1');
         }
-
-        $fieldset->addField('cta', 'text', array(
-            'name'  => 'cta',
-            'label' => Mage::helper('slideshow')->__('CTA'),
-            'title' => Mage::helper('slideshow')->__('CTA'),
-            'after_element_html' => '<small>' . Mage::helper('slideshow')->__('The Call To Action text could e.g. be used in a button.') . '</small>',
-        ));
-
-        $fieldset->addField('position', 'text', array(
-            'name'  => 'position',
-            'label' => Mage::helper('slideshow')->__('Position'),
-            'title' => Mage::helper('slideshow')->__('Position'),
-        ));
-
-        $fieldset->addType('image', 'KL_Slideshow_Model_Data_Form_Element_Image');
-
-        $fieldset->addField('filename', 'image', array(
-            'name'  => 'filename',
-            'label' => Mage::helper('slideshow')->__('Image'),
-            'title' => Mage::helper('slideshow')->__('Image'),
-        ));
-
-        $fieldset->addField('url', 'text', array(
-            'name'  => 'url',
-            'label' => Mage::helper('slideshow')->__('URL'),
-            'title' => Mage::helper('slideshow')->__('URL'),
-        ));
-
-        $fieldset->addField('content', 'editor', array(
-            'name'      => 'content',
-            'label'     => Mage::helper('slideshow')->__('Content'),
-            'title'     => Mage::helper('slideshow')->__('Content'),
-            'style'     => 'height:12em',
-            'required'  => false,
-            'config'    => Mage::getSingleton('cms/wysiwyg_config')->getConfig()
-        ));
-
-        $fieldset->addField('classes', 'text', array(
-            'name'  => 'classes',
-            'label' => Mage::helper('slideshow')->__('CSS Classes'),
-            'title' => Mage::helper('slideshow')->__('CSS Classes'),
-        ));
-
-        $fieldset->addField('slideshow_id', 'multiselect', array(
-            'name'     => 'slideshows[]',
-            'label'    => Mage::helper('slideshow')->__('Slideshow'),
-            'title'    => Mage::helper('slideshow')->__('Slideshow'),
-            'required' => false,
-            'values'   => Mage::helper('slideshow')->getSlideshows()
-        ));
 
         $form->setValues($model->getData());
         $form->setUseContainer(true);

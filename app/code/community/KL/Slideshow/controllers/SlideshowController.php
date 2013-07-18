@@ -74,16 +74,15 @@ class KL_Slideshow_SlideshowController extends Mage_Adminhtml_Controller_Action
     public function editAction()
     {
         $this->_title($this->__('CMS'))->_title($this->__('Slideshows'));
-
-        $id    = $this->getRequest()->getParam('slide_id');
-        $model = Mage::getModel('slideshow/slide');
+        $id    = $this->getRequest()->getParam('slideshow_id');
+        $model = Mage::getModel('slideshow/slideshow');
 
         if ($id) {
             $model->load($id);
 
             if (!$model->getId()) {
                 Mage::getSingleton('adminhtml/session')->addError(
-                    Mage::helper('slideshow')->__("This slide doesn't exist anymore.")
+                    Mage::helper('slideshow')->__("This slideshow doesn't exist anymore.")
                 );
 
                 $this->_redirect('*/*/');
@@ -92,10 +91,10 @@ class KL_Slideshow_SlideshowController extends Mage_Adminhtml_Controller_Action
             }
 
             $title      = $model->getName();
-            $breadcrumb = Mage::helper('slideshow')->__('Edit slide');
+            $breadcrumb = Mage::helper('slideshow')->__('Edit Slideshow');
         } else {
-            $title      = $this->__('New slide');
-            $breadcrumb = Mage::helper('slideshow')->__('New slide');
+            $title      = $this->__('New Slideshow');
+            $breadcrumb = Mage::helper('slideshow')->__('New Slideshow');
         }
 
         $data = Mage::getSingleton('adminhtml/session')->getFormData(true);
@@ -123,12 +122,12 @@ class KL_Slideshow_SlideshowController extends Mage_Adminhtml_Controller_Action
         $data = $this->getRequest()->getPost();
 
         if ($data) {
-            $id    = $this->getRequest()->getParam('slide_id');
-            $model = Mage::getModel('slideshow/slide')->load($id);
+            $id    = $this->getRequest()->getParam('slideshow_id');
+            $model = Mage::getModel('slideshow/slideshow')->load($id);
 
             if (!$model->getId() && $id) {
                 Mage::getSingleton('adminhtml/session')->addError(
-                    Mage::helper('slideshow')->__("This slide doesn't exist anymore.")
+                    Mage::helper('slideshow')->__("This slideshow doesn't exist anymore.")
                 );
 
                 $this->_redirect('*/*/');
@@ -137,56 +136,28 @@ class KL_Slideshow_SlideshowController extends Mage_Adminhtml_Controller_Action
             }
 
             try {
-                $image = $this->getRequest()->getPost('filename');
-
-                if (!empty($_FILES['filename']['name'])) {
-                    $uploader = new Varien_File_Uploader('filename');
-
-                    $uploader->setAllowedExtensions(array('jpg', 'jpeg', 'gif', 'png'));
-                    $uploader->setAllowRenameFiles(true);
-                    $uploader->setFilesDispersion(false);
-                    
-                    $result = $uploader->save(
-                        Mage::helper('slideshow')->getImagePath(),
-                        $_FILES['filename']['name']
-                    );
-
-                    $data['filename'] = $result['file'];
-                } else if (is_array($image)) {
-                    if (isset($image['delete']) && $image['delete'] == 1) {
-                        $data['filename'] = '';
-                    } else if (isset($image['value'])) {
-                        $data['filename'] = $image['value'];
-                    }
-                }
-
                 $model->setData($data);
                 $model->save();
 
                 Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('slideshow')->__('The slide was successfully saved.')
+                    Mage::helper('slideshow')->__('The slideshow was successfully saved.')
                 );
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
 
                 if ($this->getRequest()->getParam('back')) {
-                    $this->_redirect('*/*/edit', array('slide_id' => $model->getId()));
+                    $this->_redirect('*/*/edit', array('slideshow_id' => $model->getId()));
 
                     return;
                 }
             } catch (Exception $e) {
                 $error_msg = $e->getMessage();
-                
-                if ($error_msg === 'Disallowed file type.') {
-                    $error_msg = Mage::helper('slideshow')
-                        ->__('The image file must be in either jpeg, gif or png format.');
-                }
 
                 Mage::getSingleton('adminhtml/session')->addError($error_msg);
                 Mage::getSingleton('adminhtml/session')->setFormData($data);
 
                 $this->_redirect(
                     '*/*/edit',
-                    array('slide_id' => $this->getRequest()->getParam('slide_id'))
+                    array('slideshow_id' => $this->getRequest()->getParam('slideshow_id'))
                 );
 
                 return;
@@ -203,33 +174,33 @@ class KL_Slideshow_SlideshowController extends Mage_Adminhtml_Controller_Action
      */
     public function deleteAction()
     {
-        $id = $this->getRequest()->getParam('slide_id');
+        $id = $this->getRequest()->getParam('slideshow_id');
 
         if ($id) {
             try {
-                $model = Mage::getModel('slideshow/slide');
+                $model = Mage::getModel('slideshow/slideshow');
 
                 $model->load($id);
                 $model->delete();
-                
+
                 Mage::getSingleton('adminhtml/session')->addSuccess(
-                    Mage::helper('slideshow')->__('The slide was successfully deleted.')
+                    Mage::helper('slideshow')->__('The slideshow was successfully deleted.')
                 );
-                
+
                 $this->_redirect('*/*/');
 
                 return;
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
 
-                $this->_redirect('*/*/edit', array('slide_id' => $id));
+                $this->_redirect('*/*/edit', array('slideshow_id' => $id));
 
                 return;
             }
         }
-        
+
         Mage::getSingleton('adminhtml/session')->addError(
-            Mage::helper('slideshow')->__('Could not find the slide.')
+            Mage::helper('slideshow')->__('Could not find the slideshow.')
         );
 
         $this->_redirect('*/*/');

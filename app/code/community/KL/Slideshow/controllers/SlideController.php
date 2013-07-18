@@ -145,7 +145,7 @@ class KL_Slideshow_SlideController extends Mage_Adminhtml_Controller_Action
                     $uploader->setAllowedExtensions(array('jpg', 'jpeg', 'gif', 'png'));
                     $uploader->setAllowRenameFiles(true);
                     $uploader->setFilesDispersion(false);
-                    
+
                     $result = $uploader->save(
                         Mage::helper('slideshow')->getImagePath(),
                         $_FILES['filename']['name']
@@ -175,7 +175,7 @@ class KL_Slideshow_SlideController extends Mage_Adminhtml_Controller_Action
                 }
             } catch (Exception $e) {
                 $error_msg = $e->getMessage();
-                
+
                 if ($error_msg === 'Disallowed file type.') {
                     $error_msg = Mage::helper('slideshow')
                         ->__('The image file must be in either jpeg, gif or png format.');
@@ -211,11 +211,11 @@ class KL_Slideshow_SlideController extends Mage_Adminhtml_Controller_Action
 
                 $model->load($id);
                 $model->delete();
-                
+
                 Mage::getSingleton('adminhtml/session')->addSuccess(
                     Mage::helper('slideshow')->__('The slide was successfully deleted.')
                 );
-                
+
                 $this->_redirect('*/*/');
 
                 return;
@@ -227,7 +227,7 @@ class KL_Slideshow_SlideController extends Mage_Adminhtml_Controller_Action
                 return;
             }
         }
-        
+
         Mage::getSingleton('adminhtml/session')->addError(
             Mage::helper('slideshow')->__('Could not find the slide.')
         );

@@ -50,4 +50,24 @@ class KL_Slideshow_Helper_Data extends Mage_Core_Helper_Abstract
 
         return $url;
     }
+
+    /**
+     * Get Slideshows for multiselect in form
+     *
+     * @return array
+     */
+    public function getSlideshows()
+    {
+        $model = Mage::getModel('slideshow/slideshow');
+
+        $data = array();
+        foreach($model->getCollection()->load() as $_slideshow) {
+            $data[] = array(
+                'label' => $_slideshow->getTitle(),
+                'value' => $_slideshow->getSlideshowId()
+            );
+        }
+
+        return $data;
+    }
 }

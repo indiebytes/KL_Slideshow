@@ -62,16 +62,28 @@ class KL_Slideshow_Model_Mysql4_Slide
     protected function _afterSave(Mage_Core_Model_Abstract $object)
     {
         $adapter   = $this->_getWriteAdapter();
+
+        // Stores
         $condition = $adapter->quoteInto('slide_id = ?', $object->getId());
         $table     = $this->getTable('slideshow/slide_store');
         $stores    = (array) $object->getData('stores');
-
         $adapter->delete($table, $condition);
-
         foreach ($stores as $store) {
             $storeArray             = array();
             $storeArray['slide_id'] = $object->getId();
             $storeArray['store_id'] = $store;
+
+            $adapter->insert($table, $storeArray);
+        }
+
+        // Slideshows
+        $table      = $this->getTable('slideshow/slideshow_slide');
+        $slideshows = (array) $object->getData('slideshows');
+        $adapter->delete($table, $condition);
+        foreach ($slideshows as $slideshow) {
+            $storeArray                 = array();
+            $storeArray['slide_id']     = $object->getId();
+            $storeArray['slideshow_id'] = $slideshow;
 
             $adapter->insert($table, $storeArray);
         }
@@ -89,19 +101,31 @@ class KL_Slideshow_Model_Mysql4_Slide
     protected function _afterLoad(Mage_Core_Model_Abstract $object)
     {
         if ($object->getId()) {
+
+            // Load selected stores
             $select = $this->_getReadAdapter()->select()
                 ->from($this->getTable('slideshow/slide_store'))
                 ->where('slide_id = ?', $object->getId());
             $data   = $this->_getReadAdapter()->fetchAll($select);
-
             if ($data) {
-                $storesArray = array();
-
+                $stores = array();
                 foreach ($data as $row) {
-                    $storesArray[] = $row['store_id'];
+                    $stores[] = $row['store_id'];
                 }
+                $object->setData('store_id', $stores);
+            }
 
-                $object->setData('store_id', $storesArray);
+            // Load selected slideshows
+            $select = $this->_getReadAdapter()->select()
+                ->from($this->getTable('slideshow/slideshow_slide'))
+                ->where('slide_id = ?', $object->getId());
+            $data   = $this->_getReadAdapter()->fetchAll($select);
+            if ($data) {
+                $slideshows = array();
+                foreach ($data as $row) {
+                    $slideshows[] = $row['slideshow_id'];
+                }
+                $object->setData('slideshow_id', $slideshows);
             }
         }
 

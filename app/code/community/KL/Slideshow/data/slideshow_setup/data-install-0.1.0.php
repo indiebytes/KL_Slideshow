@@ -27,11 +27,11 @@ $tables[] = $installer->getConnection()
         'Filename')
     ->addColumn('cta', Varien_Db_Ddl_Table::TYPE_TEXT, 255,
         array(
-        ), 
+        ),
         'Call To Action')
     ->addColumn('url', Varien_Db_Ddl_Table::TYPE_TEXT, 255,
         array(
-        ), 
+        ),
         'URL')
     ->addColumn('content', Varien_Db_Ddl_Table::TYPE_TEXT, '2M',
         array(

@@ -62,7 +62,7 @@ class KL_Slideshow_Model_Mysql4_Slideshow
     protected function _afterSave(Mage_Core_Model_Abstract $object)
     {
         $adapter   = $this->_getWriteAdapter();
-        $condition = $adapter->quoteInto('slide_id = ?', $object->getId());
+        $condition = $adapter->quoteInto('slideshow_id = ?', $object->getId());
         $table     = $this->getTable('slideshow/slideshow_store');
         $stores    = (array) $object->getData('stores');
 

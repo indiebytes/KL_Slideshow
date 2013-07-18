@@ -92,4 +92,17 @@ foreach ($tables as $table) {
     $installer->getConnection()->createTable($table);
 }
 
+/**
+ * Add new column to `slideshow` table
+ *
+ */
+$installer->getConnection()
+    ->addColumn($installer->getTable('slide'), 'classes', array(
+        'nullable' => true,
+        'length' => 255,
+        'type' => Varien_Db_Ddl_Table::TYPE_TEXT,
+        'comment' => 'CSS Classes'
+    )
+);
+
 $installer->endSetup();

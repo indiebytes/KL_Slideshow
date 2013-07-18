@@ -30,10 +30,21 @@ class KL_Slideshow_Block_Slideshow extends Mage_Core_Block_Template
      */
     public function getImages()
     {
-        return Mage::getModel('slideshow/slide')
-            ->getCollection()
-            ->addStoreFilter(Mage::app()->getStore()->getId())
+        $model = Mage::getModel('slideshow/slide')->getCollection();
+
+        if($this->getSlideshow()) {
+            $model->getSelect()
+            ->join(
+                array('slideshow_slide' => $model->getTable('slideshow/slideshow_slide')),
+                'main_table.slide_id = slideshow_slide.slide_id',
+                array('slideshow_slide.*'))
+            ->where('slideshow_slide.slideshow_id = ?', $this->getSlideshow());
+        }
+
+        $model->addStoreFilter(Mage::app()->getStore()->getId())
             ->addFilter('is_active', array('eq' => '1'))
             ->setOrder('position', 'ASC');
+
+        return $model->load();
     }
 }
