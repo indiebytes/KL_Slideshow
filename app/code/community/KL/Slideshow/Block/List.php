@@ -7,19 +7,21 @@
  * This source file is subject to the new MIT license that is bundled
  * with this package in the file LICENSE.
  *
- * @category   KL
- * @package    KL_Slideshow
- * @copyright  Copyright (c) 2013 Karlsson & Lord AB (http://karlssonlord.com)
- * @license    http://opensource.org/licenses/MIT MIT License
+ * @category  KL
+ * @package   KL_Slideshow
+ * @author    Andreas Karlsson <andreas@karlssonlord.com>
+ * @copyright 2013 Karlsson & Lord AB
+ * @license   http://opensource.org/licenses/MIT MIT License
  */
 
 /**
  * List block
  *
- * @category   KL
- * @package    KL_Slideshow
- * @copyright  Copyright (c) 2013 Karlsson & Lord AB (http://karlssonlord.com)
- * @license    http://opensource.org/licenses/MIT MIT License
+ * @category  KL
+ * @package   KL_Slideshow
+ * @author    Andreas Karlsson <andreas@karlssonlord.com>
+ * @copyright 2013 Karlsson & Lord AB
+ * @license   http://opensource.org/licenses/MIT MIT License
  */
 class KL_Slideshow_Block_List extends Mage_Core_Block_Template
 {
@@ -39,10 +41,12 @@ class KL_Slideshow_Block_List extends Mage_Core_Block_Template
     {
         $this->_slideshow = Mage::getModel('slideshow/slide')->getCollection();
 
-        $this->addData(array(
-            'cache_lifetime' => 600,
-            'cache_tags'     => array(Mage_Catalog_Model_Product::CACHE_TAG),
-        ));
+        $this->addData(
+            array(
+                'cache_lifetime' => 600,
+                'cache_tags'     => array(Mage_Catalog_Model_Product::CACHE_TAG),
+            )
+        );
     }
 
     /**

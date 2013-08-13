@@ -7,19 +7,21 @@
  * This source file is subject to the new MIT license that is bundled
  * with this package in the file LICENSE.
  *
- * @category   KL
- * @package    KL_Slideshow
- * @copyright  Copyright (c) 2013 Karlsson & Lord AB (http://karlssonlord.com)
- * @license    http://opensource.org/licenses/MIT MIT License
+ * @category  KL
+ * @package   KL_Slideshow
+ * @author    Andreas Karlsson <andreas@karlssonlord.com>
+ * @copyright 2013 Karlsson & Lord AB
+ * @license   http://opensource.org/licenses/MIT MIT License
  */
 
 /**
- * Form block class.
+ * Form block class
  *
- * @category   KL
- * @package    KL_Slideshow
- * @copyright  Copyright (c) 2013 Karlsson & Lord AB (http://karlssonlord.com)
- * @license    http://opensource.org/licenses/MIT MIT License
+ * @category  KL
+ * @package   KL_Slideshow
+ * @author    Andreas Karlsson <andreas@karlssonlord.com>
+ * @copyright 2013 Karlsson & Lord AB
+ * @license   http://opensource.org/licenses/MIT MIT License
  */
 class KL_Slideshow_Block_Adminhtml_Slide_Edit_Form
     extends Mage_Adminhtml_Block_Widget_Form
@@ -42,7 +44,8 @@ class KL_Slideshow_Block_Adminhtml_Slide_Edit_Form
      *
      * @return void
      */
-    protected function _prepareLayout() {
+    protected function _prepareLayout()
+    {
         parent::_prepareLayout();
 
         if (Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) {
@@ -53,7 +56,8 @@ class KL_Slideshow_Block_Adminhtml_Slide_Edit_Form
     /**
      * Prepare form
      */
-    protected function _prepareForm() {
+    protected function _prepareForm()
+    {
         $model = Mage::registry('slideshow');
 
         $form = new Varien_Data_Form(array(
