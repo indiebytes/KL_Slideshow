@@ -2,7 +2,7 @@
 <config>
     <modules>
         <KL_Slideshow>
-            <version>0.1.1</version>
+            <version>0.2.0</version>
         </KL_Slideshow>
     </modules>
     <global>
@@ -107,8 +107,21 @@
                                     <title>Slideshows</title>
                                     <sort_order>30</sort_order>
                                 </slideshow>
+
                             </children>
                         </cms>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <kl_slideshow translate="title" module="slideshow">
+                                            <title>Slideshow</title>
+                                            <sort_order>9999</sort_order>
+                                        </kl_slideshow>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
                     </children>
                 </admin>
             </resources>
@@ -121,4 +134,12 @@
             </updates>
         </layout>
     </adminhtml>
+    <default>
+        <kl_slideshow>
+            <kl_slideshow_settings>
+                <sizes>default</sizes>
+                <styles>default</styles>
+            </kl_slideshow_settings>
+        </kl_slideshow>
+    </default>
 </config>

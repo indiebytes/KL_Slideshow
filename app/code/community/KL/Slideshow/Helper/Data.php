@@ -70,4 +70,22 @@ class KL_Slideshow_Helper_Data extends Mage_Core_Helper_Abstract
 
         return $data;
     }
+
+    /**
+     * Return data specified as a comma separated string as an associative array
+     *
+     * @param $name
+     *
+     * @return array
+     */
+    public function getConfigValueSeparatedByComma($name)
+    {
+        $value = Mage::getStoreConfig('kl_slideshow/kl_slideshow_settings/' . $name);
+        $value = explode(",", $value);
+        $return = array();
+        foreach ($value as $name) {
+            $return[$name] = $this->__(ucfirst($name));
+        }
+        return $return;
+    }
 }
