@@ -21,8 +21,7 @@
  * @copyright  Copyright (c) 2013 Karlsson & Lord AB (http://karlssonlord.com)
  * @license    http://opensource.org/licenses/MIT MIT License
  */
-class KL_Slideshow_Helper_Data extends Mage_Core_Helper_Abstract
-{
+class KL_Slideshow_Helper_Data extends Mage_Core_Helper_Abstract {
     /**
      * Get image path
      *
@@ -44,7 +43,7 @@ class KL_Slideshow_Helper_Data extends Mage_Core_Helper_Abstract
     {
         $url = Mage::getBaseUrl('media') . 'slideshow' . DS;
 
-        if ($filename !== null) {
+        if ( $filename !== null ) {
             $url .= $filename;
         }
 
@@ -61,7 +60,7 @@ class KL_Slideshow_Helper_Data extends Mage_Core_Helper_Abstract
         $model = Mage::getModel('slideshow/slideshow');
 
         $data = array();
-        foreach($model->getCollection()->load() as $_slideshow) {
+        foreach ($model->getCollection()->load() as $_slideshow) {
             $data[] = array(
                 'label' => $_slideshow->getTitle(),
                 'value' => $_slideshow->getSlideshowId()
@@ -84,7 +83,7 @@ class KL_Slideshow_Helper_Data extends Mage_Core_Helper_Abstract
         $value = explode(",", $value);
         $return = array();
         foreach ($value as $name) {
-            $return[$name] = $this->__(ucfirst($name));
+            $return[$name] = $this->__($name);
         }
         return $return;
     }

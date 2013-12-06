@@ -139,6 +139,7 @@
             <kl_slideshow_settings>
                 <sizes>default</sizes>
                 <styles>default</styles>
+                <templates>default</templates>
             </kl_slideshow_settings>
         </kl_slideshow>
     </default>
