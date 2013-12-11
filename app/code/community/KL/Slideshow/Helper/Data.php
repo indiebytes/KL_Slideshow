@@ -29,7 +29,7 @@ class KL_Slideshow_Helper_Data extends Mage_Core_Helper_Abstract {
      */
     public function getImagePath()
     {
-        $path = Mage::getBaseDir('media') . DS . 'slideshow' . DS;
+        $path = Mage::getBaseUrl('media') . DS . 'slideshow' . DS;
 
         return $path;
     }
