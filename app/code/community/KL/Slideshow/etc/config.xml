@@ -103,11 +103,20 @@
                     <children>
                         <cms>
                             <children>
-                                <slideshow>
+                                <slideshow_root  translate="title" module="slideshow">
                                     <title>Slideshows</title>
-                                    <sort_order>30</sort_order>
-                                </slideshow>
-
+                                    <sort_order>25</sort_order>
+                                    <children>
+                                        <slideshow translate="title" module="slideshow">
+                                            <title>Slideshows</title>
+                                            <sort_order>10</sort_order>
+                                        </slideshow>
+                                        <slide translate="title" module="slideshow">
+                                            <title>Slides</title>
+                                            <sort_order>20</sort_order>
+                                        </slide>
+                                    </children>
+                                </slideshow_root>
                             </children>
                         </cms>
                         <system>
