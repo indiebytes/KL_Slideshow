@@ -15,6 +15,19 @@ The easiest way to install the module is by using [modman](https://github.com/ka
 
 Slideshows are simply used as containers for slides. A slideshow has relations to one or more stores.
 
+
+#### Layout XML
+
+```xml
+<block type="slideshow/slideshow" slideshow="1" template="slideshow/default.phtml" />
+```
+
+#### CMS
+
+```
+{{block type="slideshow/slideshow" slideshow="1" template="slideshow/default.phtml"}}
+```
+
 ### Slides
 
 Slides are the actual content of the slideshows. Each slideshow belongs to one or multiple slideshows and one or multiple stores.
