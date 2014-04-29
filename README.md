@@ -19,13 +19,17 @@ Slideshows are simply used as containers for slides. A slideshow has relations t
 #### Layout XML
 
 ```xml
-<block type="slideshow/slideshow" slideshow="1" template="slideshow/default.phtml" />
+<block name="charles.mingus" type="slideshow/slideshow" template="slideshow/default.phtml">
+  <action method="setSlideshow">
+    <slideshow>1</slideshow>
+  </action>
+</block>
 ```
 
 #### CMS
 
 ```
-{{block type="slideshow/slideshow" slideshow="1" template="slideshow/default.phtml"}}
+{{block type="slideshow/slideshow" template="slideshow/default.phtml" slideshow="1"}}
 ```
 
 ### Slides
