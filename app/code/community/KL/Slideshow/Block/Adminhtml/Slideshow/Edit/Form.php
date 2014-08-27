@@ -104,6 +104,20 @@ class KL_Slideshow_Block_Adminhtml_Slideshow_Edit_Form
             ));
         }
 
+        $fieldset->addField('category', 'text', array(
+            'name'      => 'category',
+            'label'     => Mage::helper('slideshow')->__('Category'),
+            'title'     => Mage::helper('slideshow')->__('Category'),
+            'required'  => true,
+        ));
+
+        $fieldset->addField('template', 'text', array(
+            'name'      => 'template',
+            'label'     => Mage::helper('slideshow')->__('Template'),
+            'title'     => Mage::helper('slideshow')->__('Template'),
+            'required'  => true,
+        ));
+
         $fieldset->addField('is_active', 'select', array(
             'label'    => Mage::helper('slideshow')->__('Status'),
             'title'    => Mage::helper('slideshow')->__('Status'),

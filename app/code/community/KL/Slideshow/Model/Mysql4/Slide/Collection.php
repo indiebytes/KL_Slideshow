@@ -33,6 +33,7 @@ class KL_Slideshow_Model_Mysql4_Slide_Collection
     {
         $this->_init('slideshow/slide');
         $this->_map['fields']['store'] = 'store_table.store_id';
+        $this->_map['fields']['slideshow'] = 'slideshow_slide.slideshow_id';
     }
 
     /**
@@ -67,6 +68,24 @@ class KL_Slideshow_Model_Mysql4_Slide_Collection
     }
 
     /**
+     * Add slideshow filter
+     *
+     * @param mixed   $slideshow
+     *
+     * @return KL_Slideshow_Model_Mysql4_Slide_Collection
+     */
+    public function addSlideshowFilter($slideshow)
+    {
+        if ($slideshow instanceof KL_Slideshow_Model_Slideshow) {
+            $slideshow = $slideshow->getId();
+        }
+
+        $this->addFilter('slideshow', array('eq' => $slideshow), 'public');
+
+        return $this;
+    }
+
+    /**
      * Get select count SQL
      *
      * @return
@@ -90,6 +109,14 @@ class KL_Slideshow_Model_Mysql4_Slide_Collection
             $this->getSelect()->join(
                 array('store_table' => $this->getTable('slideshow/slide_store')),
                 'main_table.slide_id = store_table.slide_id',
+                array()
+            )->group('main_table.slide_id');
+        }
+
+        if ($this->getFilter('slideshow')) {
+            $this->getSelect()->join(
+                array('slideshow_slide' => $this->getTable('slideshow/slideshow_slide')),
+                'main_table.slide_id = slideshow_slide.slide_id',
                 array()
             )->group('main_table.slide_id');
         }
