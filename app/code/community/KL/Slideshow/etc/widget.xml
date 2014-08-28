@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<widgets>
+    <kl_slideshow_widget type="slideshow/widget">
+        <name>Slideshow</name>
+        <description type="desc">Adds a slideshow to your page</description>
+        <parameters>
+            <slideshow_selector>
+                <label>Slideshow</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>slideshow/selector</source_model>
+            </slideshow_selector>
+            <template translate="label">
+                <label>Frontend Template</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <values>
+                    <text translate="label">
+                        <value>widgettwo/text.phtml</value>
+                        <label>Text Links</label>
+                    </text>
+                    <icons translate="label">
+                        <value>widgettwo/icons.phtml</value>
+                        <label>Icon Links</label>
+                    </icons>
+                </values>
+            </template>
+        </parameters>
+    </kl_slideshow_widget>
+</widgets>
