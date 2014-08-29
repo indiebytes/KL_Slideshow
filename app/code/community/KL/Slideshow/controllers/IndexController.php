@@ -10,7 +10,7 @@ class KL_Slideshow_IndexController extends Mage_Core_Controller_Front_Action
         $html = $this->getLayout()->createBlock(
             'Mage_Core_Block_Template',
             'collection',
-            array('template' => "slideshow/" . $slideshow->getTemplate() . ".phtml", 'images' => $images)
+            array('template' => "slideshow/" . $slideshow->getTemplate() . ".phtml", 'images' => $images, 'slideshow' => $slideshow)
         )->toHtml();
 
         $this->getResponse()->setBody($html);
