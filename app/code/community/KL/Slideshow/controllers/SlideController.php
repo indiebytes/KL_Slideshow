@@ -137,28 +137,9 @@ class KL_Slideshow_SlideController extends Mage_Adminhtml_Controller_Action
             }
 
             try {
-                $image = $this->getRequest()->getPost('filename');
 
-                if (!empty($_FILES['filename']['name'])) {
-                    $uploader = new Varien_File_Uploader('filename');
-
-                    $uploader->setAllowedExtensions(array('jpg', 'jpeg', 'gif', 'png'));
-                    $uploader->setAllowRenameFiles(true);
-                    $uploader->setFilesDispersion(false);
-
-                    $result = $uploader->save(
-                        Mage::helper('slideshow')->getImagePath(),
-                        $_FILES['filename']['name']
-                    );
-
-                    $data['filename'] = $result['file'];
-                } else if (is_array($image)) {
-                    if (isset($image['delete']) && $image['delete'] == 1) {
-                        $data['filename'] = '';
-                    } else if (isset($image['value'])) {
-                        $data['filename'] = $image['value'];
-                    }
-                }
+                $data = $this->uploadImage($data, 'filename');
+                $data = $this->uploadImage($data, 'alternative_filename');
 
                 $model->setData($data);
                 $model->save();
@@ -243,5 +224,42 @@ class KL_Slideshow_SlideController extends Mage_Adminhtml_Controller_Action
     protected function _isAllowed()
     {
         return Mage::getSingleton('admin/session')->isAllowed('cms/slideshow');
+    }
+
+    /**
+     * @param $data
+     * @param $image
+     * @return mixed
+     */
+    protected function uploadImage($data, $filename)
+    {
+        $image = $this->getRequest()->getPost($filename);
+        if (!empty($_FILES[$filename]['name'])) {
+            $uploader = new Varien_File_Uploader($filename);
+
+            $uploader->setAllowedExtensions(array('jpg', 'jpeg', 'gif', 'png'));
+            $uploader->setAllowRenameFiles(true);
+            $uploader->setFilesDispersion(false);
+
+            $result = $uploader->save(
+                Mage::helper('slideshow')->getImagePath(),
+                $_FILES[$filename]['name']
+            );
+
+            $data[$filename] = $result['file'];
+
+            return $data;
+        }
+
+        else if (is_array($image))
+        {
+            if (isset($image['delete']) && $image['delete'] == 1) {
+                $data[$filename] = '';
+            } else if (isset($image['value'])) {
+                $data[$filename] = $image['value'];
+            }
+        }
+
+        return $data;
     }
 }

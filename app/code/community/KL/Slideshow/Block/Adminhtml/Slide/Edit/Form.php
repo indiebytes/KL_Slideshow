@@ -177,6 +177,18 @@ class KL_Slideshow_Block_Adminhtml_Slide_Edit_Form
             )
         );
 
+
+
+        $fieldset->addField(
+            'alternative_filename',
+            'image',
+            array(
+                'name' => 'alternative_filename',
+                'label' => Mage::helper('slideshow')->__('MouseOver Image'),
+                'title' => Mage::helper('slideshow')->__('MouseOver Image'),
+            )
+        );
+
         $fieldset->addField(
             'url',
             'text',
