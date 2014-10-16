@@ -177,7 +177,25 @@ class KL_Slideshow_Block_Adminhtml_Slide_Edit_Form
             )
         );
 
+        $fieldset->addField(
+            'image_title',
+            'text',
+            array(
+                'name' => 'image_title',
+                'label' => Mage::helper('slideshow')->__('Image Title'),
+                'title' => Mage::helper('slideshow')->__('Image Title'),
+            )
+        );
 
+        $fieldset->addField(
+            'image_alt',
+            'text',
+            array(
+                'name' => 'image_alt',
+                'label' => Mage::helper('slideshow')->__('Image Alt'),
+                'title' => Mage::helper('slideshow')->__('Image Alt'),
+            )
+        );
 
         $fieldset->addField(
             'alternative_filename',
