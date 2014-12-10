@@ -76,6 +76,19 @@ class KL_Slideshow_Model_Mysql4_Slideshow
             $adapter->insert($table, $storeArray);
         }
 
+        // Categories
+        $table      = $this->getTable('slideshow/slideshow_to_category');
+        $categories = (array) $object->getData('categories');
+        $adapter->delete($table, $condition);
+        foreach ($categories as $category) {
+            $storeArray                 = array();
+            $storeArray['slideshow_id'] = $object->getId();
+            $storeArray['category_id']  = $category;
+
+            $adapter->insert($table, $storeArray);
+        }
+
+
         return parent::_afterSave($object);
     }
 
@@ -103,6 +116,19 @@ class KL_Slideshow_Model_Mysql4_Slideshow
 
                 $object->setData('store_id', $storesArray);
             }
+        }
+
+        // Load selected categories
+        $select = $this->_getReadAdapter()->select()
+            ->from($this->getTable('slideshow/slideshow_to_category'))
+            ->where('slideshow_id = ?', $object->getId());
+        $data   = $this->_getReadAdapter()->fetchAll($select);
+        if ($data) {
+            $categories = array();
+            foreach ($data as $row) {
+                $categories[] = $row['category_id'];
+            }
+            $object->setData('category_id', $categories);
         }
 
         return parent::_afterLoad($object);

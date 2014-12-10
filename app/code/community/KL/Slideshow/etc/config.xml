@@ -2,7 +2,7 @@
 <config>
     <modules>
         <KL_Slideshow>
-            <version>0.5.0</version>
+            <version>0.6.0</version>
         </KL_Slideshow>
     </modules>
     <global>
@@ -37,6 +37,13 @@
                     <slideshow_slide>
                         <table>slideshow_slide</table>
                     </slideshow_slide>
+                    <category>
+                        <table>slideshow_category</table>
+                    </category>
+                    <slideshow_to_category>
+                        <table>slideshow_to_category</table>
+                    </slideshow_to_category>
+
                 </entities>
             </slideshow_mysql4>
         </models>
@@ -92,6 +99,11 @@
                                 <action>slideshow/slide</action>
                                 <sort_order>20</sort_order>
                             </slide>
+                            <category translate="title" module="slideshow">
+                                <title>Categories</title>
+                                <action>slideshow/category</action>
+                                <sort_order>30</sort_order>
+                            </category>
                         </children>
                     </slideshow>
                 </children>
@@ -115,6 +127,10 @@
                                             <title>Slides</title>
                                             <sort_order>20</sort_order>
                                         </slide>
+                                        <category translate="title" module="slideshow">
+                                            <title>Categories</title>
+                                            <sort_order>30</sort_order>
+                                        </category>
                                     </children>
                                 </slideshow>
                             </children>

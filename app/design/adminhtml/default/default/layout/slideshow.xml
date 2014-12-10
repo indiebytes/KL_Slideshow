@@ -28,4 +28,18 @@
             <block type="slideshow/adminhtml_slideshow_edit" name="cms_block_edit"></block>
         </reference>
     </slideshow_slideshow_edit>
+    <slideshow_category_index>
+        <reference name="content">
+            <block type="slideshow/adminhtml_category" name="cms_block"/>
+        </reference>
+    </slideshow_category_index>
+    <slideshow_category_new>
+        <update handle="slideshow_category_edit"/>
+    </slideshow_category_new>
+    <slideshow_category_edit>
+        <update handle="editor"/>
+        <reference name="content">
+            <block type="slideshow/adminhtml_category_edit" name="cms_block_edit"></block>
+        </reference>
+    </slideshow_category_edit>
 </layout>

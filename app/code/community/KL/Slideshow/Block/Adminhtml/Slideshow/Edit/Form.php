@@ -104,12 +104,25 @@ class KL_Slideshow_Block_Adminhtml_Slideshow_Edit_Form
             ));
         }
 
+        $fieldset->addField(
+            'category_id',
+            'multiselect',
+            array(
+                'name' => 'categories[]',
+                'label' => Mage::helper('slideshow')->__('Category'),
+                'title' => Mage::helper('slideshow')->__('Category'),
+                'required' => false,
+                'values' => Mage::helper('slideshow')->getCategories()
+            )
+        );
+
+/*
         $fieldset->addField('category', 'text', array(
             'name'      => 'category',
             'label'     => Mage::helper('slideshow')->__('Category'),
             'title'     => Mage::helper('slideshow')->__('Category'),
         ));
-
+*/
         $fieldset->addField('template', 'text', array(
             'name'      => 'template',
             'label'     => Mage::helper('slideshow')->__('Template'),

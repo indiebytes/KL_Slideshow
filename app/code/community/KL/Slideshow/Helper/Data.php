@@ -71,6 +71,26 @@ class KL_Slideshow_Helper_Data extends Mage_Core_Helper_Abstract {
     }
 
     /**
+     * Get Categories for multiselect in form
+     *
+     * @return array
+     */
+    public function getCategories()
+    {
+        $model = Mage::getModel('slideshow/category');
+
+        $data = array();
+        foreach ($model->getCollection()->load() as $_category) {
+            $data[] = array(
+                'label' => $_category->getName(),
+                'value' => $_category->getCategoryId()
+            );
+        }
+
+        return $data;
+    }
+
+    /**
      * Return data specified as a comma separated string as an associative array
      *
      * @param $name
