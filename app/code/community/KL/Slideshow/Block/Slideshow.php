@@ -50,4 +50,36 @@ class KL_Slideshow_Block_Slideshow extends Mage_Core_Block_Template
 
         return $model->load();
     }
+    /**
+    * Z-index doesnt work on Youtube videos in IE. this function adds a parameter to the URL to fix that.
+    */
+    public function MakeYoutubeWorkWithIE($content)
+    {
+
+        // The Regular Expression filter
+        $reg_exUrl = "/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/[^\"\']*)?/";
+
+        // Check if there is a url in the text
+        if(preg_match($reg_exUrl, $content, $url)) {
+
+                $oldUrl = $url[0];
+
+                // check if we haven't already set wmode
+                if (strpos($oldUrl,'wmode') !== false) {
+                    return $content;
+                }
+
+                else{
+                    // Returns a string if the URL has parameters or NULL if not
+                    $query = parse_url($oldUrl, PHP_URL_QUERY);
+                    $separator = $query ? "&" : "?";
+                    $newUrl = $oldUrl .  $separator . "wmode=transparent";
+                    return preg_replace($reg_exUrl, $newUrl, $content);
+                }
+        } else {
+
+               // if no urls in the text just return the text
+               return $content;
+        };
+    }
 }
