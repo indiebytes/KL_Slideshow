@@ -4,6 +4,11 @@ $installer = $this;
 $installer->startSetup();
 
 /**
+ * Reset tables array
+ */
+$tables = array();
+
+/**
  * Create table for slides
  */
 $tables[] = $installer->getConnection()
