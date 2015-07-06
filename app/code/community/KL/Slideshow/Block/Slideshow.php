@@ -26,6 +26,14 @@
 class KL_Slideshow_Block_Slideshow extends Mage_Core_Block_Template
 {
     /**
+     * Allow block to be cached for 1 hour
+     */
+    protected function _construct()
+    {
+        $this->setCacheLifetime(3600);
+    }
+
+    /**
      * Get images
      *
      * @return KL_Slideshow_Model_Mysql4_Slide_Collection
