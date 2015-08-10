@@ -264,6 +264,7 @@ class KL_Slideshow_Block_Adminhtml_Slide_Edit_Form
             )
         );
 
+// var_dump(Mage::helper('slideshow')->getConfigValueSeparatedByComma('styles')); die;
         $fieldset->addField(
             'custom_style',
             'select',
@@ -285,6 +286,18 @@ class KL_Slideshow_Block_Adminhtml_Slide_Edit_Form
                 'name' => 'custom_template',
                 'required' => false,
                 'options' => Mage::helper('slideshow')->getConfigValueSeparatedByComma('templates')
+            )
+        );
+
+        $fieldset->addField(
+            'hover_effect',
+            'select',
+            array(
+                'label' => Mage::helper('slideshow')->__('Hover Effect'),
+                'title' => Mage::helper('slideshow')->__('Hover Effect'),
+                'name' => 'hover_effect',
+                'required' => false,
+                'options' => Array('on' => 'on', 'off' => 'off')
             )
         );
 
